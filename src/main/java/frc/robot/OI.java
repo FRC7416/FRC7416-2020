@@ -48,7 +48,19 @@ public double getFThrottle(){
 public double getHatState(){
     return this.fStick.getPOV();
 }
-
+public double getHatStateOther(){
+    return this.driverPad.getPOV();
+}
+public double interpretHatStateOther(int forward, int back, double speed0, double speed1){
+    double speed = 0.0;
+  
+    if (getHatStateOther() == forward)
+         speed = speed0;
+    else if (getHatStateOther() == back)
+        
+         speed = speed1;
+    return speed;
+}
 public double interpretHatState(int forward, int back, double speed0, double speed1){
     double speed = 0.0;
   
@@ -59,6 +71,7 @@ public double interpretHatState(int forward, int back, double speed0, double spe
          speed = speed1;
     return speed;
 }
+
 
 
 public boolean getTState(){

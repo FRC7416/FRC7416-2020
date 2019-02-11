@@ -3,7 +3,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-
 public class LiftOperation extends Command {
   public LiftOperation() {
     requires(Robot.lift);
@@ -21,10 +20,8 @@ public class LiftOperation extends Command {
     Robot.lift.driveTurntable(Robot.oi.interpretHatState(90,270,0.2,-0.2));
     Robot.lift.driveLift(Robot.oi.interpretHatState(0,180,0.2,-.2));
 
-    Robot.lift.pushers(Robot.oi.interpretHatState(90,270,1,1), true);
-    Robot.lift.pushers(Robot.oi.interpretHatState(0,180,1,1), true);
-
-
+    Robot.lift.pushers(Robot.oi.interpretHatStateOther(90,270,1,1), true);
+    Robot.lift.pushers(Robot.oi.interpretHatStateOther(0,180,1,1), false);
   }
 
   @Override
