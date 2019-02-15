@@ -15,7 +15,6 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class Robot extends IterativeRobot {
-  
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lift lift = new Lift();
   public static OI oi;
@@ -25,7 +24,7 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
     NetworkTable table = inst.getTable("datatable");
-    
+
     lidar = table.getEntry("LIDAR"); 
     CameraServer.getInstance().startAutomaticCapture();
     oi = new OI();  

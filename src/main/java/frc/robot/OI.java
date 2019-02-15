@@ -1,9 +1,12 @@
 
 package frc.robot;
 
+import edu.wpi.first.hal.PWMConfigDataResult;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.AnalogInput;
+
 
 public class OI {
      
@@ -22,7 +25,14 @@ private static double stickDeadband(double value, double deadband, double center
 private static double fStickDeadband(double value, double deadband, double center) {
     return (value < (center + deadband) && value > (center - deadband)) ? center : value;
 }
-
+private static void test()
+{
+    AnalogInput exampleAnalog = new AnalogInput(0);
+    int raw = exampleAnalog.getValue();
+    double volts = exampleAnalog.getVoltage();
+    int averageRaw = exampleAnalog.getAverageValue();
+    double averageVolts = exampleAnalog.getAverageVoltage();
+}
 
 
 public double getFstickX() {
