@@ -41,13 +41,21 @@ public void driveTurntable(double speed)
 
   turntable.set(speed);
 }
-public void pushers(double speed, boolean isFront)
+public void pushers(double speed, boolean isFront, boolean isBoth)
 {
-  if (isFront)
+  if(isBoth)
+  {
     frontPush.set(speed);
+    backPush.set(speed);
+  }
   else
   {
-    backPush.set(speed);
+    if (isFront)
+      frontPush.set(speed);
+    else
+    {
+      backPush.set(speed);
+    }
   }
 }
 @Override

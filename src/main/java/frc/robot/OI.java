@@ -26,8 +26,8 @@ private static double fStickDeadband(double value, double deadband, double cente
     return (value < (center + deadband) && value > (center - deadband)) ? center : value;
 }
 public double getFstickX() {
-    //return fStickDeadband(this.driverPad.getRawAxis(FstickMap.XAXIS), 0, 0.0);
-    return fStickDeadband(this.fStick.getRawAxis(FStickMap.XAXIS), XFSTICK_DEADBAND, 0.0);
+    return fStickDeadband(this.driverPad.getRawAxis(FStickMap.XAXIS), 0, 0.0);
+  //return fStickDeadband(this.fStick.getRawAxis(FStickMap.XAXIS), XFSTICK_DEADBAND, 0.0);
 }
 
 public double getFstickY() {
@@ -61,7 +61,6 @@ public double interpretHatStateOther(int forward, int back, double speed0, doubl
 }
 public double interpretHatState(int forward, int back, double speed0, double speed1){
     double speed = 0.0;
-  
     if (getHatState() == forward)
          speed = speed0;
     else if (getHatState() == back)
@@ -76,6 +75,11 @@ public boolean getTState(){
     return this.fStick.getTrigger();
     //return this.fStick.getRawButtonPressed(b);
 }
+public boolean getTStateOther(){
+    return this.driverPad.getTrigger();
+    //return this.fStick.getRawButtonPressed(b);
+}
+
 public double getMultiplier(double axis, double throttle){
   //throttle = -throttle;
   // throttle is backwards goes from 1 t0 -1
