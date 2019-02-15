@@ -20,8 +20,8 @@ public class LiftOperation extends Command {
     Robot.lift.driveTurntable(Robot.oi.interpretHatState(90,270,0.2,-0.2));
     Robot.lift.driveLift(Robot.oi.interpretHatState(0,180,0.2,-.2));
 
-    Robot.lift.pushers(Robot.oi.interpretHatStateOther(90,270,1,1), true);
-    Robot.lift.pushers(Robot.oi.interpretHatStateOther(0,180,1,1), false);
+    Robot.lift.pushers(Robot.oi.interpretHatState(90,270,1.0,1.0), true);
+    Robot.lift.pushers(Robot.oi.interpretHatState(0,180,1.0,1.0), false);
   }
 
   @Override

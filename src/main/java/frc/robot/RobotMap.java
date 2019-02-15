@@ -12,6 +12,7 @@ public class RobotMap {
   public static final int FRONT_PUSH_MOTOR =4;
   public static final int BACK_PUSH_MOTOR = 5;
 
+  public static final int LIDAR_ANALOG_IN = 0;
   //Rasberry PI
 }
 

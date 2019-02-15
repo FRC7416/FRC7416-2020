@@ -8,17 +8,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.*;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class Robot extends IterativeRobot {
-  
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lift lift = new Lift();
   public static OI oi;
-
+  public static LIDAR dist = new LIDAR();
+  NetworkTableEntry lidar;
   @Override
   public void robotInit() {
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTable table = inst.getTable("datatable");
+
+    lidar = table.getEntry("LIDAR"); 
     CameraServer.getInstance().startAutomaticCapture();
     oi = new OI();  
   }
@@ -56,6 +63,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    lidar.setDouble(Robot.dist.getDistance());
   }
 
   @Override
