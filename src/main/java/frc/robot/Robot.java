@@ -11,11 +11,12 @@ import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class Robot extends IterativeRobot {
-  public static PWM lidar = new PWM(6);
+  public static PWM lidar = new PWM(7);
+  //public static PWM lidar = new PWM(0);
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lift lift = new Lift();
   public static OI oi;
