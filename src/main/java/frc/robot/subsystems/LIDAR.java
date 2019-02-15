@@ -10,7 +10,7 @@ public class LIDAR{
         PWM lidar = new PWM(RobotMap.LIDAR_ANALOG_IN);
         int rawInput = lidar.getRaw();
         distance = rawInput / 2;
+        System.out.print(distance);
         return distance;
-
     }
 }
