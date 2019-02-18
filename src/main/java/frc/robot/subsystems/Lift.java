@@ -41,14 +41,14 @@ public void driveTurntable(double speed)
 
   turntable.set(speed);
 }
-public void pushers(double speed, boolean isFront, boolean isBoth)
+public void pushers(double speed, boolean isFront)
 {
-  if(isBoth)
-  {
-    frontPush.set(speed);
-    backPush.set(speed);
-  }
-  else
+ // if(isBoth)
+  //{
+    //  frontPush.set(speed);
+      //backPush.set(speed);
+ // }
+  //else
   {
     if (isFront)
       frontPush.set(speed);
@@ -58,6 +58,27 @@ public void pushers(double speed, boolean isFront, boolean isBoth)
     }
   }
 }
+public void bothPushers()
+{
+  double same = Robot.oi.interpretHatStateOther(0,180,1,-1);
+  double diffrent = Robot.oi.interpretHatStateOther(90,270,1,-1);
+  if (same != 0)
+  {
+    frontPush.set(same);
+    backPush.set(same);
+  }
+  else if(diffrent != 0)
+  {
+    frontPush.set(diffrent);
+    backPush.set(-diffrent);
+  }
+  else
+  {
+    backPush.set(0);
+    frontPush.set(0);
+  }
+}
+
 @Override
   public void initDefaultCommand() {
     setDefaultCommand(new LiftOperation());
