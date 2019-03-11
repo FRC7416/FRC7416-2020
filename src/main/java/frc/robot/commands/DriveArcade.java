@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.LIDAR;
 public class DriveArcade extends Command {
-  private LIDAR lidar = new LIDAR();
+  
   public DriveArcade() {
     requires(Robot.drivetrain);
   }
@@ -20,13 +20,14 @@ public class DriveArcade extends Command {
 
 
 
-    System.out.println(lidar.getDistance());
+   
     //Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getFstickX(),Robot.oi.getFThrottle()), Robot.oi.getMultiplier(Robot.oi.getFstickY(),Robot.oi.getFThrottle()));
-    Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getFstickY(),Robot.oi.getFThrottle()), Robot.oi.getMultiplier(Robot.oi.getFstickX(),Robot.oi.getFThrottle()));
-
+    //Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getFstickY(),Robot.oi.getFThrottle()), Robot.oi.getMultiplier(Robot.oi.getFstickX(),Robot.oi.getFThrottle()), Robot.oi.getTState());
+    Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getButtonPressed(1),Robot.oi.getButtonPressed(2)) * Robot.oi.getFstickY(),Robot.oi.getMultiplier(Robot.oi.getButtonPressed(1),Robot.oi.getButtonPressed(2)) * Robot.oi.getFstickX(), Robot.oi.getTState());
     
   }
 
+  
   @Override
   protected boolean isFinished() {
     return false;

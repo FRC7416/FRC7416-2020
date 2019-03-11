@@ -16,6 +16,7 @@ public class OI {
 
 private double FSTICK_DEADBAND = 0.05;
 private static final double XFSTICK_DEADBAND = 0.1;
+public double multiplier = .5;
 
 private static double stickDeadband(double value, double deadband, double center) {
     return (value < (center + deadband) && value > (center - deadband)) ? center : value;
@@ -71,6 +72,9 @@ public double interpretHatState(int forward, int back, double speed0, double spe
 
 
 
+public boolean getButtonPressed(int map){
+    return fStick.getRawButton(map);
+}
 public boolean getTState(){
     return this.fStick.getTrigger();
     //return this.fStick.getRawButtonPressed(b);
@@ -79,32 +83,40 @@ public boolean getTStateOther(){
     return this.driverPad.getTrigger();
     //return this.fStick.getRawButtonPressed(b);
 }
-
-public double getMultiplier(double axis, double throttle){
-  //throttle = -throttle;
-  // throttle is backwards goes from 1 t0 -1
-  if (throttle >=-1 && throttle <=-0.5){
-  throttle = 1;
-  FSTICK_DEADBAND = .05;
-  }
-  else if (throttle>-0.5 && throttle <= 0){
-  throttle = .75;
-  FSTICK_DEADBAND = .05;
-  }
-  else if (throttle> 0 && throttle <= 0.5){
-  throttle = .5;
-  FSTICK_DEADBAND = .05;
-  }
-  else if (throttle > 0.5 && throttle <= 1){
+public double getMultiplier(boolean speedOneButton, boolean speedTwoButton){
+    if (speedOneButton == true){
+        multiplier = .5;
+    }
+    if (speedTwoButton == true){
+        multiplier = .25;
+    }
+    return multiplier;
+}
+// public double getMultiplier(double axis, double throttle){
+//throttle = -throttle;
+//   // throttle is backwards goes from 1 t0 -1
+//   if (throttle >=-1 && throttle <=-0.5){
+//   throttle = 1;
+//   FSTICK_DEADBAND = .05;
+//   }
+//   else if (throttle>-0.5 && throttle <= 0){
+//   throttle = .75;
+//   FSTICK_DEADBAND = .05;
+//   }
+//   else if (throttle> 0 && throttle <= 0.5){
+//   throttle = .5;
+//   FSTICK_DEADBAND = .05;
+//   }
+//   else if (throttle > 0.5 && throttle <= 1){
 
   
-  throttle = .25;
-  FSTICK_DEADBAND = 0.1;
-  }
-  return axis*throttle;
+//   throttle = .25;
+//   FSTICK_DEADBAND = 0.1;
+//   }
+//   return axis*throttle;
 
 
-}
+// }
 
 
 }

@@ -8,19 +8,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
-
 public class Drivetrain extends Subsystem {
 private VictorSP leftMain = new VictorSP(RobotMap.LEFT_MAIN_MOTOR);
 private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
 
  public Drivetrain (){
   leftMain.setInverted(false);
-  
   rightMain.setInverted(true);
  
 } 
 
-public void driveArcade(double throttle, double turn) {
+public void driveArcade(double throttle, double turn, boolean triggerState) {
+  if (triggerState == true){
+    throttle = 0 -throttle;
+    
+  }
+  
   drive(throttle + turn, throttle - turn);
   
 }

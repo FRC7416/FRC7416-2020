@@ -7,7 +7,7 @@ public class LiftOperation extends Command {
   public LiftOperation() {
     requires(Robot.lift);
   }
-
+  
   @Override
   protected void initialize() {
   }
@@ -22,7 +22,7 @@ public class LiftOperation extends Command {
 
     Robot.lift.pushers(Robot.oi.interpretHatStateOther(90,270,1.0,-1.0), true, Robot.oi.getTStateOther());
     Robot.lift.pushers(Robot.oi.interpretHatStateOther(0,180,1.0,-1.0), false, Robot.oi.getTStateOther());
-
+    System.out.println(Robot.lidar.getDistance());
   }
 
   @Override

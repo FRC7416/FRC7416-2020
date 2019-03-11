@@ -15,7 +15,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class Robot extends IterativeRobot {
-  public static PWM lidar = new PWM(7);
+  public static LIDAR lidar = new LIDAR();
+  
   //public static PWM lidar = new PWM(0);
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lift lift = new Lift();
