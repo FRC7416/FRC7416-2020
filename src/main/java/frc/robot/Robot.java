@@ -1,34 +1,22 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
+// import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj.PWM;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.CameraServer;
 
-public class Robot extends IterativeRobot {
-  public static LIDAR lidar = new LIDAR();
+import edu.wpi.first.wpilibj.command.Scheduler;
+import frc.robot.subsystems.*;
+//import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer;
+
+public class Robot extends TimedRobot {
   
-  //public static PWM lidar = new PWM(0);
+  
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lift lift = new Lift();
   public static OI oi;
- // public static LIDAR dist = new LIDAR();
-  //NetworkTableEntry lidar;
-  @Override
-  public void robotInit() {
-    //NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    //NetworkTable table = inst.getTable("datatable");
 
-   // lidar = table.getEntry("LIDAR"); 
+  @Override
+  public void robotInit() { 
     CameraServer.getInstance().startAutomaticCapture();
     oi = new OI();  
   }
@@ -66,7 +54,7 @@ public class Robot extends IterativeRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-   // lidar.setDouble(Robot.dist.getDistance());
+   
   }
 
   @Override

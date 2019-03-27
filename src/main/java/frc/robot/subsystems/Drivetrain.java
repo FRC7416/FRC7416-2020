@@ -1,43 +1,56 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Talon;
+
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
 public class Drivetrain extends Subsystem {
-private VictorSP leftMain = new VictorSP(RobotMap.LEFT_MAIN_MOTOR);
-private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
+  //initialize the VictorSPX motor controllers for the left and right drive train
+  //both motors on each side are controlled by one controller, since they should always output the same power
+  private VictorSP leftMain = new VictorSP(RobotMap.LEFT_MAIN_MOTOR);
+  private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
 
- public Drivetrain (){
-  leftMain.setInverted(false);
-  rightMain.setInverted(true);
- 
-} 
+  public Drivetrain (){
 
-public void driveArcade(double throttle, double turn, boolean triggerState) {
-  if (triggerState == true){
-    throttle = 0 -throttle;
+    //one motor must be inverted for the robot to drive forward, as they are identical drive trains, one mounted "backwards"
+    //switch these to switch which was is forward
+    leftMain.setInverted(false);
+    rightMain.setInverted(true);
+  
+  } 
+
+  /**
+   * This method handles math for turning, than passes the new values into drive()
+   * @param throttle The Y axis value from a Joystick
+   * @param turn The X axis value from a Joystick
+   */
+  public void driveArcade(double throttle, double turn) {
+    //this method does all the math for driving, both forward and turning
+    
+    drive(throttle + turn, throttle - turn);
     
   }
-  
-  drive(throttle + turn, throttle - turn);
-  
-}
 
-public void drive(double left, double right)
-{
-  leftMain.set(left);
+
+  /**
+  * This method sets the power for the drive motors
+  * @param left The power for the left motors, between 1 and -1
+  * @param right the power for the right motors, between 1 and -1
+  */
+  public void drive(double left, double right)
+  {
+    //this method takes the numbers calculated from driveArcade and actually sets the values to the motors.
+    leftMain.set(left);
+    
+    rightMain.set(right);
   
-  rightMain.set(right);
- 
-}
-@Override
-  public void initDefaultCommand() {
-    setDefaultCommand(new DriveArcade());
   }
-  
+  @Override
+    public void initDefaultCommand() {
+      setDefaultCommand(new DriveArcade());
+    }
+    
 }

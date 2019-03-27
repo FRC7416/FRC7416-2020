@@ -2,8 +2,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.FStickMap;
 import frc.robot.Robot;
-import frc.robot.subsystems.LIDAR;
+
 public class DriveArcade extends Command {
   
   public DriveArcade() {
@@ -16,14 +17,21 @@ public class DriveArcade extends Command {
 
   @Override
   protected void execute() {
-    //I belive this is where all button-press commands should go.
-
-
-
-   
-    //Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getFstickX(),Robot.oi.getFThrottle()), Robot.oi.getMultiplier(Robot.oi.getFstickY(),Robot.oi.getFThrottle()));
-    //Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getFstickY(),Robot.oi.getFThrottle()), Robot.oi.getMultiplier(Robot.oi.getFstickX(),Robot.oi.getFThrottle()), Robot.oi.getTState());
-    Robot.drivetrain.driveArcade(Robot.oi.getMultiplier(Robot.oi.getButtonPressed(1),Robot.oi.getButtonPressed(2)) * Robot.oi.getFstickY(),Robot.oi.getMultiplier(Robot.oi.getButtonPressed(1),Robot.oi.getButtonPressed(2)) * Robot.oi.getFstickX(), Robot.oi.getTState());
+  
+    //the drive command for the robot. 
+    //It gets the multiplier for the speed, then multiplies it by the Y axis, then repeats this process for the X axis
+    //it then passes those values into driveArcade
+    Robot.drivetrain.driveArcade(
+        Robot.oi.getMultiplier(
+            Robot.oi.getButtonPressed(Robot.oi.rightFStick, 3),
+            Robot.oi.getButtonPressed(Robot.oi.rightFStick, 2), 
+            Robot.oi.getButtonPressed(Robot.oi.rightFStick, 4)) 
+        * Robot.oi.getAxis(Robot.oi.rightFStick, FStickMap.YAXIS, Robot.oi.RIGHT_FSTICK_DEADBAND),
+          Robot.oi.getMultiplier(
+            Robot.oi.getButtonPressed(Robot.oi.rightFStick, 3),
+            Robot.oi.getButtonPressed(Robot.oi.rightFStick, 2), 
+            Robot.oi.getButtonPressed(Robot.oi.rightFStick, 4))
+        * Robot.oi.getAxis(Robot.oi.leftFStick, FStickMap.XAXIS, Robot.oi.LEFT_FSTICK_DEADBAND));
     
   }
 
