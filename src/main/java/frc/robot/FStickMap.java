@@ -1,8 +1,7 @@
 
 package frc.robot;
 
-public class FStickMap {
-    //Map for the flightstick
+public class FStickMap { 
     //Axis
     public static final int XAXIS = 0;
     public static final int YAXIS = 1;
@@ -13,5 +12,6 @@ public class FStickMap {
     public static final int BUTTON1 = 1;
     public static final int BUTTON2 = 2;
     public static final int BUTTON3 = 3;
-    
+    public static final int BUTTON4 = 4;
+
 }

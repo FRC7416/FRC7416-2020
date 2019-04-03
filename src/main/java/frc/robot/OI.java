@@ -3,20 +3,39 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
      
-    //initializes the Joystick objects for both flight sticks
+    /**
+     * The right flight stick, a Thrustmaster T-16000. Used to control the hatch lift, turntable, drive speeds, and forward drive
+     */
     public Joystick rightFStick = new Joystick(0);
+
+    /**
+     * The left flight stick, a Logitech Extreme 3d Pro. Used to control the elevators and drive turn
+     */
     public Joystick leftFStick = new Joystick(1);
 
-    //initializes the deadband values for the joysticks.
+    
     public final double RIGHT_FSTICK_DEADBAND = 0.05;
     public final double LEFT_FSTICK_DEADBAND = 0.001;
 
-    //initializes the multiplier value for the engine speed.
+    
+    /**The multiplier for the Drivetrain. Speed is multiplied by this double before being passed into the drive methods
+     * Is initialized at the lowest speed, .25, the speed used during Sandstorm
+    */
     public double multiplier = .25;
 
+    /**
+     * This variable is used to reverse the robot when a button is pressed
+     */
+    public double reverse = 1;
+
+
+    public Button leftFStickButton2 = new JoystickButton(leftFStick, 2);
+                                    
     
     /** 
     *  This value tests whether a value from a joystick is within it's deadband. 
@@ -78,6 +97,7 @@ public class OI {
         return fStick.getRawButton(map);
     }
 
+    
     /**
      * This method is used to read buttons from Joysticks
      * @param fStick The Joystick object the method reads the vaules from
@@ -89,17 +109,17 @@ public class OI {
     }
 
     /**This method is used to change the speed multiplier for the robot
-     * @param speedOneButton the boolean value of the button being tested for the higher speed, .5
-     * @param speedTwoButton the boolean value of the button being tested for the lowest speed, .25
+     * @param speedOneButton the boolean value of the button being tested for the lowest speed, .25
+     * @param speedTwoButton the boolean value of the button being tested for the middle speed, .5
      * @param speedThreeButton the boolean value of the button being tested for the highest speed, .75
-     * @return The multiplier value for the speed, either .25 or .5
+     * @return The multiplier value for the speed, either .25, .5, or .75
      */
     public double getMultiplier(boolean speedOneButton, boolean speedTwoButton, boolean speedThreeButton){
         if (speedOneButton == true){
-            multiplier = .5;
+            multiplier = .25;
         }
         if (speedTwoButton == true){
-            multiplier = .25;
+            multiplier = .5;
         }
         if (speedThreeButton == true){
             multiplier = .75;

@@ -4,6 +4,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.*;
 
@@ -34,11 +35,12 @@ public class Drivetrain extends Subsystem {
     
   }
 
+    
 
   /**
   * This method sets the power for the drive motors
   * @param left The power for the left motors, between 1 and -1
-  * @param right the power for the right motors, between 1 and -1
+  * @param right The power for the right motors, between 1 and -1
   */
   public void drive(double left, double right)
   {
@@ -47,6 +49,8 @@ public class Drivetrain extends Subsystem {
     
     rightMain.set(right);
   
+    SmartDashboard.putNumber("Right Drive Speed", right);
+    SmartDashboard.putNumber("Left Drive SPeed", left);
   }
   @Override
     public void initDefaultCommand() {
