@@ -14,8 +14,8 @@ public class LiftOperation extends Command {
 
   @Override
   protected void execute() {
-    Robot.lift.driveTurntable(Robot.oi.interpretHatState(Robot.oi.rightFStick, 90,270,0.2,-0.2));
-    Robot.lift.driveLift(Robot.oi.interpretHatState(Robot.oi.rightFStick, 0,180,0.2,-.2));
+    Robot.lift.driveTurntable(Robot.oi.interpretHatState(Robot.oi.rightFStick, 90,270,1.0,-1.0));
+    Robot.lift.driveLift(Robot.oi.interpretHatState(Robot.oi.rightFStick, 0,180,0.2,-.2));//don't change speeds It'll mess up dirver
 
 
     //if statement tests if both pushers should be controlled.

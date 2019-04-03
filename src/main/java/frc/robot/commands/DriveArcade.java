@@ -25,8 +25,9 @@ public class DriveArcade extends Command {
       Robot.oi.getButtonPressed(Robot.oi.rightFStick, FStickMap.BUTTON4));
     
     SmartDashboard.putNumber("Speed Multiplier", multiplier);
-    Robot.oi.leftFStickButton2.whenReleased(new Reverse());
+    Robot.oi.leftFStickButton2.whenPressed(new Reverse());
 
+    Robot.oi.leftFStickButton3.whenPressed(new Lock());
 
     Robot.drivetrain.driveArcade(
       multiplier * Robot.oi.reverse * Robot.oi.getAxis(Robot.oi.rightFStick, FStickMap.YAXIS, Robot.oi.RIGHT_FSTICK_DEADBAND),

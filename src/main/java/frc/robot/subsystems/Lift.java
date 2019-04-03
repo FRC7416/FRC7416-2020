@@ -27,8 +27,6 @@ public class Lift extends Subsystem {
    */
   public void driveLift(double speed)
   {
-    if (Robot.oi.getTState(Robot.oi.rightFStick) == true)
-      speed = speed * .35;
     liftMotor.set(speed);
   }
 
@@ -38,9 +36,6 @@ public class Lift extends Subsystem {
    */
   public void driveTurntable(double speed)
   {
-    if (Robot.oi.getTState(Robot.oi.rightFStick) == true)
-      speed = speed * 1.5;
-
     turntable.set(speed);
   }
 

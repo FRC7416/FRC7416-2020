@@ -13,6 +13,7 @@ public class Drivetrain extends Subsystem {
   //both motors on each side are controlled by one controller, since they should always output the same power
   private VictorSP leftMain = new VictorSP(RobotMap.LEFT_MAIN_MOTOR);
   private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
+  private VictorSP lockMoter = new VictorSP(RobotMap.LOCK_MOTER);
 
   public Drivetrain (){
 
@@ -22,6 +23,14 @@ public class Drivetrain extends Subsystem {
     rightMain.setInverted(true);
   
   } 
+/**
+ * Sets the lock moter's speed
+ * @param speed The speed of the moter -1.0 to 1.0
+ */
+  public void setLockMoter(double speed)
+  {
+      lockMoter.set(speed);
+  }
 
   /**
    * This method handles math for turning, than passes the new values into drive()

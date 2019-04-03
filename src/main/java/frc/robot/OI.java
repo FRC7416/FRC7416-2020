@@ -34,7 +34,13 @@ public class OI {
     public double reverse = 1;
 
 
+    /**
+     * This variable is used to track the current position of the Lock arm, and reverse the direction it runs each time
+     */
+    public double lockDirection = 1;
+
     public Button leftFStickButton2 = new JoystickButton(leftFStick, 2);
+    public Button leftFStickButton3 = new JoystickButton(leftFStick, 3);
                                     
     
     /** 
