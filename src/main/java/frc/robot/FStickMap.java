@@ -13,5 +13,6 @@ public class FStickMap {
     public static final int BUTTON2 = 2;
     public static final int BUTTON3 = 3;
     public static final int BUTTON4 = 4;
+    public static final int BUTTON5 = 5;
 
 }

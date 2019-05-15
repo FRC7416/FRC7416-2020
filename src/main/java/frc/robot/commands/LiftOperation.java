@@ -4,6 +4,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 public class LiftOperation extends Command {
+  /**
+   * This command class runs constantly and is responsible for the Hatch Lift, Turntable, and Elevators(pushers because nathan is dumb)
+   */
   public LiftOperation() {
     requires(Robot.lift);
   }

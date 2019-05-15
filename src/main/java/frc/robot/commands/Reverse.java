@@ -10,6 +10,7 @@ public class Reverse extends Command {
   
   public Reverse() {
     requires(Robot.drivetrain);
+    requires(Robot.lift);
   }
 
   @Override
@@ -28,6 +29,7 @@ public class Reverse extends Command {
     {
       SmartDashboard.putString("Drive Direction", "Reverse");
     }
+    
     
   }
 

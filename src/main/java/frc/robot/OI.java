@@ -114,13 +114,14 @@ public class OI {
     
     }
 
-    /**This method is used to change the speed multiplier for the robot
+    /**This method is used to change the speed multiplier for the robot.
+     * <p>If more than one button is being held down, the highest one will override the rest.
      * @param speedOneButton the boolean value of the button being tested for the lowest speed, .25
      * @param speedTwoButton the boolean value of the button being tested for the middle speed, .5
      * @param speedThreeButton the boolean value of the button being tested for the highest speed, .75
      * @return The multiplier value for the speed, either .25, .5, or .75
      */
-    public double getMultiplier(boolean speedOneButton, boolean speedTwoButton, boolean speedThreeButton){
+    public double getMultiplier(boolean speedOneButton, boolean speedTwoButton, boolean speedThreeButton, boolean speedFourButton){
         if (speedOneButton == true){
             multiplier = .25;
         }
@@ -129,6 +130,9 @@ public class OI {
         }
         if (speedThreeButton == true){
             multiplier = .75;
+        }
+        if (speedFourButton == true){
+            multiplier = 1;
         }
         return multiplier;
     }
