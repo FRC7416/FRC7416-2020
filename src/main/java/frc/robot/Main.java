@@ -1,4 +1,4 @@
-
+//I didn't put these comments here, FRC did. Please take them seriously.
 package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotBase;

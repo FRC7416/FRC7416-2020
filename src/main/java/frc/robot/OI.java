@@ -9,16 +9,19 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
      
     /**
-     * The right flight stick, a Thrustmaster T-16000. Used to control the hatch lift, turntable, drive speeds, and forward drive
+     * The right flight stick, a Thrustmaster T-16000.
      */
     public Joystick rightFStick = new Joystick(0);
 
     /**
-     * The left flight stick, a Logitech Extreme 3d Pro. Used to control the elevators and drive turn
+     * The left flight stick, a Logitech Extreme 3d Pro. 
      */
     public Joystick leftFStick = new Joystick(1);
 
-    
+    //"default" deadband values
+    //was set to driver preference for 2019 season. If controlers change or driver doesn't like the feel
+    //feel free to tmess around, but don't set to zero or errors may occur. Changing this value effects the entire sensitivity curve
+    //You can pass this or any value into getAxis
     public final double RIGHT_FSTICK_DEADBAND = 0.05;
     public final double LEFT_FSTICK_DEADBAND = 0.001;
 
@@ -28,16 +31,8 @@ public class OI {
     */
     public double multiplier = .25;
 
-    /**
-     * This variable is used to reverse the robot when a button is pressed
-     */
-    public double reverse = 1;
 
 
-    /**
-     * This variable is used to track the current position of the Lock arm, and reverse the direction it runs each time
-     */
-    public double lockDirection = 1;
 
     public Button leftFStickButton2 = new JoystickButton(leftFStick, 2);
     public Button leftFStickButton3 = new JoystickButton(leftFStick, 3);
@@ -67,7 +62,7 @@ public class OI {
 
     /** This method is used to read hat switch values from any Joystick object
      * @param fStick The joystick that will be read
-     * @return the value of the hat switch in degrees (45 degree intervals). Will return -1 if position is neutral.
+     * @return The value of the hat switch in degrees (45 degree intervals). Will return -1 if position is neutral.
      * 
     */
     public int getHatState(Joystick fStick){
@@ -76,12 +71,13 @@ public class OI {
 
 
     /** Uses getHatState to read a hat's values, then interprets it into a speed value.
+     * Not currently used in this branch of the code, but I left this because it will likely be used
      * @param fStick The joystick which will have it's hat switch read
      * @param forward The hat switch value (in degrees) for the first speed
      * @param back  The hat switch value (in degrees) for the second speed
      * @param speed0 The speed value for the first speed (between -0 and 1)
      * @param speed1 The speed value for the second speed (between -1 and 1)
-     * @return a speed value between -1 and 1
+     * @return A speed value between -1 and 1
      */
     public double interpretHatState(Joystick fStick, int forward, int back, double speed0, double speed1){
         double speed = 0.0;
@@ -95,6 +91,8 @@ public class OI {
 
     /**
      * This method is used to read buttons from Joysticks
+     * Consider depricating and replacing with Button objects, allowing more versitile control
+     * The sooner you do do this the easier it will be
      * @param fStick The Joystick object the method reads values from
      * @param map The index of the button that will be read
      * @return True if button is pressed, otherwise False

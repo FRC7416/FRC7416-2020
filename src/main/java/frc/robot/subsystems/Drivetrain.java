@@ -11,6 +11,7 @@ import frc.robot.commands.*;
 public class Drivetrain extends Subsystem {
   //initialize the VictorSPX motor controllers for the left and right drive train
   //both motors on each side are controlled by one controller, since they should always output the same power
+  //If you switch to talon, since they have encoders, you will have to switch to the talon class here. I am unsure what implications that has on the rest of the code
   private VictorSP leftMain = new VictorSP(RobotMap.LEFT_MAIN_MOTOR);
   private VictorSP rightMain = new VictorSP(RobotMap.RIGHT_MAIN_MOTOR);
   
