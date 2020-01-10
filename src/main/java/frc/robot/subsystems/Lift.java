@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 import frc.robot.RobotMap;
+import frc.robot.commands.LiftAll;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -28,6 +29,6 @@ public class Lift extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new LiftAll());
   }
 }
