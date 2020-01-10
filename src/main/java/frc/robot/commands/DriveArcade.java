@@ -4,6 +4,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.FStickMap;
 
 /**
  * The DriveAracade Command class runs constantly, processing inputs to run the main motors. 
@@ -25,10 +26,10 @@ public class DriveArcade extends Command {
 
     //Here we control the multipler for the speed, comparable to "gears" in a car.
     double multiplier = Robot.oi.getMultiplier(
-      Robot.oi.getButtonPressed(Robot.oi.rightFStick, 2),
-      Robot.oi.getButtonPressed(Robot.oi.rightFStick, 3), 
-      Robot.oi.getButtonPressed(Robot.oi.rightFStick, 4),
-      Robot.oi.getButtonPressed(Robot.oi.rightFStick, 5));
+      Robot.oi.getButtonPressed(Robot.oi.rightFStick, FStickMap.BUTTON2),
+      Robot.oi.getButtonPressed(Robot.oi.rightFStick, FStickMap.BUTTON3), 
+      Robot.oi.getButtonPressed(Robot.oi.rightFStick, FStickMap.BUTTON4),
+      Robot.oi.getButtonPressed(Robot.oi.rightFStick, FStickMap.BUTTON5));
     
     //This should place the information onto smartdashboard, but it is not currently working for unknown reasons.
     SmartDashboard.putNumber("Speed Multiplier", multiplier);
@@ -37,8 +38,8 @@ public class DriveArcade extends Command {
     //multiplier: the speed multiplier, .25, .5, .75, or 1
     //Robot.oi.reverse 1 or -1
     Robot.drivetrain.driveArcade(
-      multiplier * Robot.oi.getAxis(Robot.oi.rightFStick, 0, Robot.oi.RIGHT_FSTICK_DEADBAND),
-      multiplier * Robot.oi.getAxis(Robot.oi.leftFStick, 1, Robot.oi.LEFT_FSTICK_DEADBAND));
+      multiplier * Robot.oi.getAxis(Robot.oi.rightFStick, FStickMap.YAXIS, Robot.oi.RIGHT_FSTICK_DEADBAND),
+      multiplier * Robot.oi.getAxis(Robot.oi.leftFStick, FStickMap.XAXIS, Robot.oi.LEFT_FSTICK_DEADBAND));
     
   }
 

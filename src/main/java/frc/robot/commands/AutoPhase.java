@@ -24,9 +24,9 @@ public class AutoPhase extends Command {
     //Run this code to see if the autonomous phase code is being run at all.
     //It should drive forward at 1/4 speed (not sure how gears interact) for 3/4s a second and then stop
     //Concern: Is timer stopping just actions in this command or all commands?
-    // Robot.drivetrain.driveArcade(.25, 0);
-    // Timer.delay(.75);
-    // Robot.drivetrain.driveArcade(0,0);
+    Robot.drivetrain.driveArcade(.25, 0);
+    Timer.delay(.75);
+    Robot.drivetrain.driveArcade(0,0);
   }
 
  
@@ -39,14 +39,16 @@ public class AutoPhase extends Command {
     //test 1
     //Should print to console repeatedly until it receives joystick input
 
-    // System.out.println("Autonomous code is active");
+    System.out.println("Autonomous code is active");
 
     //test 2
     //Should loop the same actions as the test in Init until it receives joystick input
-    // Timer.delay(1);
-    // Robot.drivetrain.driveArcade(.25, 0);
-    // Timer.delay(.75);
-    // Robot.drivetrain.driveArcade(0,0);
+    /*
+    Timer.delay(1);
+    Robot.drivetrain.driveArcade(.25, 0);
+    Timer.delay(.75);
+    Robot.drivetrain.driveArcade(0,0);
+    */
     
   }
 
@@ -64,26 +66,28 @@ public class AutoPhase extends Command {
     // Either rase the deadband or raise the activation threshold to avoid this
 
 
-    // if (Robot.oi.getAxis(Robot.oi.leftFStick, 0, Robot.oi.LEFT_FSTICK_DEADBAND) != 0.0
-    // || Robot.oi.getAxis(Robot.oi.leftFStick, 1, Robot.oi.LEFT_FSTICK_DEADBAND) != 0.0
-    // || Robot.oi.getAxis(Robot.oi.rightFStick, 0, Robot.oi.RIGHT_FSTICK_DEADBAND) != 0.0
-    // || Robot.oi.getAxis(Robot.oi.leftFStick, 0, Robot.oi.RIGHT_FSTICK_DEADBAND) != 0.0){
-      //   return true;
-    // }
-    // else {
-    //   return false;
-    // }
-
-    return true;
+    if (Robot.oi.getAxis(Robot.oi.leftFStick, 0, Robot.oi.LEFT_FSTICK_DEADBAND) != 0.0
+    || Robot.oi.getAxis(Robot.oi.leftFStick, 1, Robot.oi.LEFT_FSTICK_DEADBAND) != 0.0
+    || Robot.oi.getAxis(Robot.oi.rightFStick, 0, Robot.oi.RIGHT_FSTICK_DEADBAND) != 0.0
+    || Robot.oi.getAxis(Robot.oi.leftFStick, 0, Robot.oi.RIGHT_FSTICK_DEADBAND) != 0.0){
+      return true;
+     }
+    else {
+      return false;
+     }
+     
+    //return true;
   }
 
  
   @Override
   protected void end() {
+    // This is where all motors should be set to 0
   }
 
   
   @Override
   protected void interrupted() {
+    // probly won't use and if we do most likely will just call end()
   }
 }

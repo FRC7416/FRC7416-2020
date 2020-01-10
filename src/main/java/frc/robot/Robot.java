@@ -12,14 +12,17 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class Robot extends TimedRobot {
   
   Command autoCommand;
+  //subsystems need to be put here like drivetrain is
   public static Drivetrain drivetrain = new Drivetrain();
+  public static Lift lift = new Lift();
+
   public static OI oi;
 
   
 
   @Override
   public void robotInit() { 
-    CameraServer.getInstance().startAutomaticCapture();
+    //CameraServer.getInstance().startAutomaticCapture();
     oi = new OI();  
     autoCommand = new AutoPhase(); 
     

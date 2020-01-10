@@ -3,7 +3,7 @@
     "artifact": "frcJava",
     "target": "roborio",
     "debugfile": "frcJava_roborio.debugconfig",
-    "project": "7416-2019-2.0",
+    "project": "FRC7416-2020",
     "language": "java"
   }
 ]
