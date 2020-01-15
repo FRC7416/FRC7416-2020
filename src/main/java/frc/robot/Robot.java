@@ -15,7 +15,7 @@ public class Robot extends TimedRobot {
   //subsystems need to be put here like drivetrain is
   public static Drivetrain drivetrain = new Drivetrain();
   public static Lift lift = new Lift();
-
+  public static ButtonHelper buttonHelper = new ButtonHelper();
   public static OI oi;
 
   

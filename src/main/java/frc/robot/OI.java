@@ -3,8 +3,10 @@ package frc.robot;
 
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import java.lang.Object.*;
 
 public class OI {
      
@@ -36,8 +38,25 @@ public class OI {
 
     public Button leftFStickButton2 = new JoystickButton(leftFStick, 2);
     public Button leftFStickButton3 = new JoystickButton(leftFStick, 3);
-                                    
+   
+    // not sure if this is how I make a button
+    public int count= 0;
+   
+   /* public Button ball = new Button(){
     
+        @Override
+        public boolean get() {
+            return false;
+        }
+    };
+    public Button ballCount()
+    {
+        return ball;
+    }*/
+  //  ballCount.whenPressed(new Button());
+    //myButton.whenPressed(new MyCommand());
+
+   
     /** 
     *  This value tests whether a value from a joystick is within it's deadband. 
     *  @param value the axis value being tested

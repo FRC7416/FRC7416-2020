@@ -18,6 +18,7 @@ public class DriveArcade extends Command {
 
   @Override
   protected void initialize() {
+    new Buttons();
   }
 
   //This execute command handles most of our main drive functions. 
@@ -33,6 +34,7 @@ public class DriveArcade extends Command {
     
     //This should place the information onto smartdashboard, but it is not currently working for unknown reasons.
     SmartDashboard.putNumber("Speed Multiplier", multiplier);
+   
 
     //Main drive function. This takes the axis inputs from our joysticks, and then mulitplies it by:
     //multiplier: the speed multiplier, .25, .5, .75, or 1
