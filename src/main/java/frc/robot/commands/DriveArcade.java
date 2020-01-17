@@ -18,7 +18,6 @@ public class DriveArcade extends Command {
 
   @Override
   protected void initialize() {
-    new Buttons();
   }
 
   //This execute command handles most of our main drive functions. 
